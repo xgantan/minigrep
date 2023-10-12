@@ -24,6 +24,7 @@ impl Config {
     pub fn build(
         mut args: impl Iterator<Item=String>,
     ) -> Result<Config, &'static str> {
+        args.next();  // The first argument is the program name so we skip it.
         let query = match args.next() {
             Some(arg) => arg,
             None => return Err("Didn't get a query string"),
